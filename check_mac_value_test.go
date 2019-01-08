@@ -11,12 +11,16 @@ func TestCheckMacValue(t *testing.T) {
 			src:      "HashKey=5294y06JbISpM5x9&ChoosePayment=Credit&ClientBackURL=https://developers.allpay.com.tw/AioMock/MerchantClientBackUrl&CreditInstallment=&EncryptType=1&InstallmentAmount=&ItemName=MacBook 30元X2#iPhone6s 40元X1&MerchantID=2000132&MerchantTradeDate=2017/10/26 17:06:56&MerchantTradeNo=DX20171026170656oe09&PaymentType=aio&Redeem=&ReturnURL=https://developers.allpay.com.tw/AioMock/MerchantReturnUrl&StoreID=&TotalAmount=5&TradeDesc=建立信用卡測試訂單&HashIV=v77hoKGq4kWxNNIS",
 			expected: "2E5E9B603748EA4D51F49E172B495020F3585BECFB78BC934682D40A0703C2B6",
 		},
+		{
+			src:      "HashKey=5294y06JbISpM5x9&ChoosePayment=Credit&ClientBackURL=https://developers.opay.tw/AioMock/MerchantClientBackUrl&CreditInstallment=&EncryptType=1&InstallmentAmount=&ItemName=MacBook 30元X2#iPhone6s 40元X1&MerchantID=2000132&MerchantTradeDate=2019/01/08 15:55:47&MerchantTradeNo=DX20190108155547a934&PaymentType=aio&Redeem=&ReturnURL=https://developers.opay.tw/AioMock/MerchantReturnUrl&StoreID=&TotalAmount=5&TradeDesc=建立信用卡測試訂單&HashIV=v77hoKGq4kWxNNIS",
+			expected: "57923914DE3C2DEEF893A385C275C34ACB906D5116A53FDA3B1625A9071BAA7B",
+		},
 	}
 
 	for _, c := range cases {
 		actual := CheckMacValue(c.src)
 		if actual != c.expected {
-			t.Errorf("expected %s, actual %s", c.expected, actual)
+			t.Errorf("expected %s,\nactual %s", c.expected, actual)
 		}
 	}
 }
